@@ -21,11 +21,11 @@ export default function VehicleInfo() {
         </div>
         <div>
             <p className="font-bold" >Target</p>
-            <p className="vehicle-target">{currentCall.vehicleInfo.target}</p>
+            <p className="vehicle-target">{currentCall.vehicleInfo?.target || '_____'}</p>
         </div>
         <div>
             <p className="font-bold">Vehicle</p>
-            <p className="vehicle-target">{currentCall.vehicleInfo.replace}</p>
+            <p className="vehicle-target">{currentCall.vehicleInfo?.replace || '_____'}</p>
         </div>
     </div>
   
