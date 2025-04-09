@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import userImage from '../../public/images/user-image.jpg';
 
+
 export default function Header() {
   const [autoDialCountdown, setAutoDialCountdown] = useState(10);
   const [isManualMode, setIsManualMode] = useState(false);
