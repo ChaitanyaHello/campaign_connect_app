@@ -11,7 +11,7 @@ export default function ScriptSuggestions() {
   return (
     <div className="bg-white rounded-lg shadow-xl p-4 md:p-6">
     <div className="flex items-center space-x-3 mb-4">
-      <span className="bg-[#362b85] h-[30px] w-[30px] rounded-full flex"></span>
+    🎙️
       <h2 className="font-bold">Script Suggestions</h2>
     </div>
 

@@ -56,6 +56,7 @@ export const mockCallData: CallData[] = [
     callInfo: {
       duration: '00:03:09',
       status: 'ongoing',
+      number:"921 1839 1181"
     },
     target: 'Dealer',
     service: 'Battery Replacement',
@@ -66,23 +67,23 @@ export const mockCallData: CallData[] = [
       },
       {
         id: 2,
-        text: `Hi, I was just trying to find the price of 'service'`
+         text: 'Hi, Can you let me know the price for ___'
       },
       {
         id: 3,
-        text: '  Hi, I was just trying to find out how much do you charge for'
+         text: 'Hi, Can you let me know the price for ___'
       },
       {
         id: 4,
-        text: '  Hi, I was just trying to find out how much do you charge for'
+          text: 'Hi, Can you let me know the price for ___'
       },
       {
         id: 5,
-        text: 'Hi, I was just trying to find out how much do you charge for'
+          text: 'Hi, Can you let me know the price for ___'
       },
       {
         id: 6,
-        text: '  Hi, I was just trying to find out how much do you charge for'
+          text: 'Hi, Can you let me know the price for ___'
       }
     ]
   },

@@ -25,6 +25,7 @@ export interface ServiceInfo {
 export interface CallInfo {
   duration: string;
   status: 'ongoing' | 'ended' | 'pending';
+  number?:string;
 }
 
 export interface CustomerInfo {

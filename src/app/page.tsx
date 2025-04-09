@@ -23,10 +23,17 @@ export default function Home() {
       </div>
     </div>
 
-    <div className="flex-1 md:w-[78%] lg:w-[78%]">
+    <div className="flex-1 md:w-[78%] lg:w-[78%] bg-white rounded-tl-lg rounded-tr-lg shadow">
+    <div className="p-6">
+    <h2 className="text-xl  mb-6">Hi, I was just trying to find out how much do you charge for</h2>
+    <h1 className="text-2xl font-extrabold mb-8">Battery Replacement</h1>
+    <div className="flex flex-col md:flex-row gap-6">
       <VehicleInfo />
-      <div className="w-full h-[2px] bg-gray-600"></div>
       <ServiceInfo />
+      
+    </div>
+</div>
+      
     </div>
 
     <div className="w-full md:w-[20%] lg:w-[20%]"> 

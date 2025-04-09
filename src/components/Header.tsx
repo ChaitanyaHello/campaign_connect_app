@@ -91,7 +91,7 @@ export default function Header() {
 
       {/* Right Section (Buttons) */}
       <div className="flex items-center space-x-3 justify-between md:ml-auto">
-        <button
+        {/* <button
           onClick={() => setIsManualMode(!isManualMode)}
           className="px-3 py-2 border border-gray-600 rounded text-gray-700 text-sm hover:scale-110 transition-transform duration-300"
         >
@@ -103,7 +103,7 @@ export default function Header() {
           className="px-3 py-2 bg-green-500 text-white rounded text-sm hover:scale-110 transition-transform duration-300"
         >
           Start Next Dial
-        </button>
+        </button> */}
 
         <button type="button" className="text-red-500 hover:text-red-700 p-2 flex items-center log-out hover:scale-110 transition-transform duration-300">
             <i className="fa-solid fa-arrow-right-from-bracket text-xl "></i>

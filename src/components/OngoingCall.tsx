@@ -10,7 +10,6 @@ export default function OngoingCall() {
   const [isMuted, setIsMuted] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Update the call timer every second
   useEffect(() => {
     if (!currentCall) return;
 
@@ -22,103 +21,77 @@ export default function OngoingCall() {
       const minutes = Math.floor((diff % 3600) / 60);
       const seconds = diff % 60;
       setCallDuration(
-        `${hours.toString().padStart(2, "0")}:${minutes
-          .toString()
-          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
+        `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
       );
     }, 1000);
 
     return () => clearInterval(timer);
   }, [currentCall]);
 
-  // Hide component if no call/agent
   if (!currentCall || !agent) return null;
 
-  // End call handler
   const handleEndCall = () => {
     updateCallStatus(currentCall.id, "ended");
-    setCurrentCallById(""); // Clear current call
+    setCurrentCallById("");
   };
 
-  // Transfer call handler (example: agent #2)
   const handleTransfer = () => {
     const nextAgentId = "2";
     transferCall(currentCall.id, agent.id, nextAgentId, "Customer requested transfer");
   };
 
   return (
-    <div className="w-[85%] bg-[#26292E] rounded-lg shadow-xl overflow-hidden">
-      {/* 
-        TOP SECTION:
-        Large dark area for "Ongoing Call" label, 
-        green dot, and call timer
-      */}
-      <div className="h-52 flex flex-col justify-end px-4 pb-4">
-        <h2 className="text-white text-base font-semibold mb-2">Ongoing Call</h2>
-        <div className="flex items-center space-x-2">
-          {/* Green Indicator */}
-          <div className="w-3 h-3 bg-green-500 rounded-full flex items-center justify-center">
-            <div className="w-1.5 h-1.5 bg-white rounded-full" />
-          </div>
-          {/* Timer */}
-          <span className="text-white text-sm">{callDuration}</span>
+    <div className="w-[262px] bg-[#1C1C1E] rounded-xl shadow-xl overflow-hidden text-white font-sans  ">
+      {/* Profile Circle */}
+      <div className="flex flex-col items-center mt-6">
+        <div className="w-20 h-20 rounded-full bg-[#2F3237] flex items-center justify-center text-xl font-bold mb-2">
+          JL
+        </div>
+        <div className="text-lg font-semibold">{currentCall?.callInfo?.number}</div>
+        <div className="text-sm text-gray-400 mt-1">Ongoing Call</div>
+
+        {/* Green Dot + Timer */}
+        <div className="flex items-center space-x-2 mt-1">
+          <div className="w-2.5 h-2.5 bg-green-500 rounded-full" />
+          <span className="text-sm text-gray-300">{callDuration}</span>
         </div>
       </div>
 
-      {/* 
-        MIDDLE SECTION:
-        Dark bar with 4 square icon buttons
-      */}
-      <div className="bg-[#2F3237]">
-      <div className=" px-4 py-3 flex items-center space-x-3">
-        {/* 1) Mute/Unmute */}
+      {/* Middle Control Buttons */}
+      <div className="bg-[#2F3237] p-5 mt-10">
+      <div className="flex justify-between ">
+        {/* Mute */}
         <button
           onClick={() => setIsMuted(!isMuted)}
-          className="w-10 h-10 rounded-md bg-[#26292E] flex items-center justify-center border border-transparent hover:border-white hover:scale-110 transition-transform duration-300"
-          title={isMuted ? "Unmute" : "Mute"}
+          className="w-10 h-10 rounded-md bg-[#1C1C1E] flex items-center justify-center hover:scale-110 transition"
         >
           <i className="fas fa-microphone-slash text-white"></i>
         </button>
 
-        {/* 2) Transfer */}
-        <button
-          onClick={handleTransfer}
-           className="w-10 h-10 rounded-md bg-[#26292E] flex items-center justify-center border border-transparent hover:border-white hover:scale-110 transition-transform duration-300"
-          title="Transfer Call"
-        >
-          <i className="fas fa-phone text-white"></i>
-        </button>
-
-        {/* 3) Pause/Resume */}
+        {/* Pause */}
         <button
           onClick={() => setIsPaused(!isPaused)}
-           className="w-10 h-10 rounded-md bg-[#26292E] flex items-center justify-center border border-transparent hover:border-white hover:scale-110 transition-transform duration-300"
-          title={isPaused ? "Resume" : "Pause"}
+          className="w-10 h-10 rounded-md bg-[#1C1C1E] flex items-center justify-center hover:scale-110 transition"
         >
           <i className="fas fa-pause text-white"></i>
         </button>
 
-        {/* 4) Keypad (example) */}
+        {/* Keypad */}
         <button
           onClick={() => alert("Open keypad")}
-            className="w-10 h-10 rounded-md bg-[#26292E] flex items-center justify-center border border-transparent hover:border-white hover:scale-110 transition-transform duration-300"
-          title="Keypad"
+          className="w-10 h-10 rounded-md bg-[#1C1C1E] flex items-center justify-center hover:scale-110 transition"
         >
-          <i className="fas fa-keyboard text-white"></i>
+          <i className="fas fa-th text-white"></i>
         </button>
       </div>
 
-      {/* 
-        BOTTOM SECTION:
-        Full-width gradient bar with End Call icon
-      */}
-      <div className="bg-gradient-to-r from-red-500 to-purple-500 h-11 flex items-center justify-center m-3 rounded-lg">
+      {/* End Call Button */}
+      <div className="mt-4">
         <button
-         
-             className="w-10 h-10 rounded-md text-white flex items-center justify-center border border-transparent hover:border-white hover:scale-110 transition-transform duration-300"
-          title="End Call"
+          onClick={handleEndCall}
+          className="w-full h-10 rounded bg-gradient-to-r from-red-500 to-purple-500 flex items-center justify-center hover:scale-105 transition"
         >
-          <i className="fas fa-phone-slash text-xl"></i>
+          <i className="fas fa-phone-slash text-white text-lg"></i>
         </button>
       </div>
       </div>
